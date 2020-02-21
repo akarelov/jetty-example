@@ -14,12 +14,12 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @Singleton
-public class CustomServlet extends HttpServlet {
+public class CustomSecondServlet extends HttpServlet {
     private final Service service;
     private final Logger logger;
 
     @Inject
-    public CustomServlet(Service service, @Named("firstLogger") Logger logger) {
+    public CustomSecondServlet(Service service, @Named("secondLogger") Logger logger) {
         this.service = service;
         this.logger = logger;
     }
@@ -27,7 +27,7 @@ public class CustomServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setStatus(HttpStatus.OK_200);
-        String str = service.print() + " " + req.getMethod();
+        String str = service.print() + " " +req.getMethod();
 
         logger.info(str);
 
