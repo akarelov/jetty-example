@@ -18,6 +18,8 @@ dependencies {
     compile 'org.eclipse.jetty:jetty-jmx:9.3.0.M2'
     compile 'org.slf4j:slf4j-simple:1.7.12'
     compile 'org.projectlombok:lombok:1.16.4'
+    compileOnly 'org.projectlombok:lombok:1.18.8'
+    annotationProcessor 'org.projectlombok:lombok:1.18.8'
     compile group: 'com.google.inject', name: 'guice', version: '4.0'
     compile group: 'com.google.inject.extensions', name: 'guice-servlet', version: '4.0'
     compile group: 'org.apache.cayenne', name: 'cayenne-server', version: '4.1.RC2'
