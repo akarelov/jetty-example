@@ -6,15 +6,20 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import java.util.List;
+import java.util.Optional;
 
 import static com.akarelov.jetty.configuration.HibernateSessionFactoryUtil.getSessionFactory;
 
 public class AuthorDaoImpl implements AuthorDao {
 
     @Override
-    public Author findById(int id) {
+    public Optional<Author> findById(int id) {
         try (Session session = getSessionFactory().openSession()) {
-            return session.get(Author.class, id);
+            Author author = session.get(Author.class, id);
+            if (author == null) {
+                return Optional.empty();
+            }
+            return Optional.of(author);
         }
     }
 

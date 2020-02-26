@@ -3,9 +3,10 @@ package com.akarelov.jetty.dao.interfaces;
 import com.akarelov.jetty.domain.Author;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface AuthorDao {
-    Author findById(int id);
+    Optional<Author> findById(int id);
 
     Author save(Author author);
 

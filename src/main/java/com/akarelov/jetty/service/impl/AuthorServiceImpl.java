@@ -6,6 +6,7 @@ import com.akarelov.jetty.service.interfaces.AuthorService;
 import com.google.inject.Inject;
 
 import java.util.List;
+import java.util.Optional;
 
 public class AuthorServiceImpl implements AuthorService {
     private final AuthorDao authorDao;
@@ -16,7 +17,7 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
-    public Author findById(int id) {
+    public Optional<Author> findById(int id) {
         return authorDao.findById(id);
     }
 
