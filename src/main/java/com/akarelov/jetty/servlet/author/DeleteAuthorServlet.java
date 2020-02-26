@@ -9,7 +9,6 @@ import com.google.inject.Singleton;
 import org.eclipse.jetty.http.HttpStatus;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,7 +16,6 @@ import java.io.IOException;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-@WebServlet("/author")
 @Singleton
 public class DeleteAuthorServlet extends HttpServlet {
     private final AuthorDao authorDao;
