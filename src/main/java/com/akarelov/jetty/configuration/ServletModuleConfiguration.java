@@ -1,17 +1,13 @@
 package com.akarelov.jetty.configuration;
 
-import com.akarelov.jetty.servlet.author.AddAuthorServlet;
-import com.akarelov.jetty.servlet.author.DeleteAuthorServlet;
-import com.akarelov.jetty.servlet.author.GetAuthorServlet;
-import com.akarelov.jetty.servlet.author.UpdateAuthorServlet;
+import com.akarelov.jetty.servlet.author.AuthorServlet;
+import com.akarelov.jetty.servlet.note.AddNoteServlet;
 import com.google.inject.servlet.ServletModule;
 
 public class ServletModuleConfiguration extends ServletModule {
     @Override
     protected void configureServlets() {
-        serve("/author/add").with(AddAuthorServlet.class);
-        serve("/author/delete").with(DeleteAuthorServlet.class);
-        serve("/author/update").with(UpdateAuthorServlet.class);
-        serve("/author/get").with(GetAuthorServlet.class);
+        serve("/authors").with(AuthorServlet.class);
+        serve("/note/add").with(AddNoteServlet.class);
     }
 }
