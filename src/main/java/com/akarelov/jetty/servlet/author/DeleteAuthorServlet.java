@@ -40,7 +40,7 @@ public class DeleteAuthorServlet extends HttpServlet {
             resp.getWriter().println(response);
         } else {
             resp.addHeader("message", "user not exists");
-            resp.setStatus(HttpStatus.BAD_REQUEST_400);
+            resp.addHeader("errorCode", String.valueOf(HttpStatus.BAD_REQUEST_400));
             throw new UserNotExistsException();
         }
     }
