@@ -2,7 +2,7 @@ package com.akarelov.jetty.servlet.author;
 
 import com.akarelov.jetty.dao.interfaces.AuthorDao;
 import com.akarelov.jetty.domain.Author;
-import com.akarelov.jetty.exception.UserNotExistsException.UserNotExistsException;
+import com.akarelov.jetty.exception.UserNotExistsException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;

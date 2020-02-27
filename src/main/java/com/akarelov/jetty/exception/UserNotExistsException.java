@@ -1,4 +1,4 @@
-package com.akarelov.jetty.exception.UserNotExistsException;
+package com.akarelov.jetty.exception;
 
 public class UserNotExistsException extends RuntimeException {
     public UserNotExistsException() {
