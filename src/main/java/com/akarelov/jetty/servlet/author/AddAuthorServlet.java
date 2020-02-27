@@ -31,6 +31,7 @@ public class AddAuthorServlet extends HttpServlet {
                 .collect(Collectors.joining(System.lineSeparator()));
         Author author = objectMapper.readValue(body, Author.class);
         Author save = authorDao.save(author);
+        resp.setContentType("json/application");
         String response = objectMapper.writeValueAsString(save);
         resp.getWriter().println(response);
     }

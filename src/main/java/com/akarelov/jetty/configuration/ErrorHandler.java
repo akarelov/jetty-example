@@ -12,9 +12,10 @@ public class ErrorHandler extends ErrorPageErrorHandler {
     public void handle(String target, Request baseRequest, HttpServletRequest request, HttpServletResponse response) throws IOException {
         String message = response.getHeader("message");
         String errorCode = response.getHeader("errorCode");
+        response.setContentType("json/application");
         response.getWriter()
                 .append("{\"message\":\"" + message + "\",")
-                .append("\"code\":\"" + errorCode)
+                .append("\"errorCode\":\"" + errorCode)
                 .append("\"}");
     }
 }

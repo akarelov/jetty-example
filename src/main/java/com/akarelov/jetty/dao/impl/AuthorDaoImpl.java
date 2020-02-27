@@ -57,7 +57,7 @@ public class AuthorDaoImpl implements AuthorDao {
     public List<Author> findAll() {
         try (Session session = getSessionFactory().openSession()) {
             return (List<Author>) session
-                    .createQuery("from " + Author.class).list();
+                    .createQuery("from " + Author.class.getCanonicalName()).list();
         }
     }
 }

@@ -35,7 +35,8 @@ public class DeleteAuthorServlet extends HttpServlet {
         Author author = objectMapper.readValue(body, Author.class);
         Optional<Author> authFromDb = authorDao.findById(author.getId());
         if (authFromDb.isPresent()) {
-            Author delete = authorDao.delete(author);
+            Author delete = authorDao.delete(authFromDb.get());
+            resp.setContentType("json/application");
             String response = objectMapper.writeValueAsString(delete);
             resp.getWriter().println(response);
         } else {
