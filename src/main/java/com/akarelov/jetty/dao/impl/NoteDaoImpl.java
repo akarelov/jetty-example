@@ -6,14 +6,27 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import java.util.List;
+import java.util.Optional;
 
 import static com.akarelov.jetty.configuration.HibernateSessionFactoryUtil.getSessionFactory;
 
 public class NoteDaoImpl implements NoteDao {
     @Override
-    public Note findById(int id) {
+    public Optional<Note> findById(int id) {
         try (Session session = getSessionFactory().openSession()) {
-            return session.get(Note.class, id);
+            Note note = session.get(Note.class, id);
+            if (note == null) {
+                return Optional.empty();
+            }
+            return Optional.of(note);
+        }
+    }
+
+    @Override
+    public List<Note> findAllByAuthorId(int id) {
+        try (Session session = getSessionFactory().openSession()) {
+            String query = "from Note n where n.author_id = :author_id";
+            return (List<Note>) session.createQuery(query).setParameter("author_id", id).list();
         }
     }
 

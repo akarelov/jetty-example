@@ -1,5 +1,6 @@
 package com.akarelov.jetty.validation;
 
+import com.akarelov.jetty.domain.Note;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
@@ -15,5 +16,9 @@ public class ObjectValidator {
         } catch (NumberFormatException ex) {
             throw new NumberFormatException(WRONG_NUMBER_FORMAT);
         }
+    }
+
+    public void isValidate(Note note) {
+
     }
 }

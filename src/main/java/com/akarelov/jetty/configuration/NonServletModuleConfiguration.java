@@ -5,7 +5,9 @@ import com.akarelov.jetty.dao.impl.NoteDaoImpl;
 import com.akarelov.jetty.dao.interfaces.AuthorDao;
 import com.akarelov.jetty.dao.interfaces.NoteDao;
 import com.akarelov.jetty.service.impl.AuthorServiceImpl;
+import com.akarelov.jetty.service.impl.NoteServiceImpl;
 import com.akarelov.jetty.service.interfaces.AuthorService;
+import com.akarelov.jetty.service.interfaces.NoteService;
 import com.akarelov.jetty.validation.ObjectValidator;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.inject.AbstractModule;
@@ -19,5 +21,6 @@ public class NonServletModuleConfiguration extends AbstractModule {
         bind(ObjectMapper.class).in(Scopes.SINGLETON);
         bind(ObjectValidator.class).in(Scopes.SINGLETON);
         bind(AuthorService.class).to(AuthorServiceImpl.class).in(Scopes.SINGLETON);
+        bind(NoteService.class).to(NoteServiceImpl.class).in(Scopes.SINGLETON);
     }
 }
