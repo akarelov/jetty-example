@@ -52,7 +52,7 @@ public class AuthorServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         resp.setContentType(APPLICATION_JSON.asString());
         String idString = req.getParameter("id");
-        if (idString.isEmpty()) {
+        if (idString == null) {
             List<Author> authors = authorService.findAll();
             resp.getWriter().write(objectMapper.writeValueAsString(authors));
             return;

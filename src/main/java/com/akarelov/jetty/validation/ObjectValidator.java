@@ -7,7 +7,7 @@ public class ObjectValidator {
     private final static String WRONG_NUMBER_FORMAT = "you passed not number format";
 
     public int parseStringToInt(String number) {
-        if (number.isEmpty()) {
+        if (number == null || number.isEmpty()) {
             throw new NumberFormatException(WRONG_NUMBER_FORMAT);
         }
         try {
