@@ -15,9 +15,8 @@ import java.util.EnumSet;
 
 public class Application {
     public static void main(String[] args) throws Exception {
-        NonServletModuleConfiguration nonServletModuleConfiguration = new NonServletModuleConfiguration();
         ServletModuleConfiguration moduleConfiguration = new ServletModuleConfiguration();
-        Injector injector = Guice.createInjector(nonServletModuleConfiguration, moduleConfiguration);
+        Injector injector = Guice.createInjector(NonServletModuleConfiguration.getInstance(), moduleConfiguration);
 
         Server server = new Server(7070);
         ServletContextHandler handler = new ServletContextHandler(server, "/");

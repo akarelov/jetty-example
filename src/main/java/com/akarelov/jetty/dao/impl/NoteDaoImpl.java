@@ -64,7 +64,7 @@ public class NoteDaoImpl implements NoteDao {
     public List<Note> findAll() {
         try (Session session = getSessionFactory().openSession()) {
             return (List<Note>) session
-                    .createQuery("from " + Note.class).list();
+                    .createQuery("from " + Note.class.getCanonicalName()).list();
         }
     }
 }

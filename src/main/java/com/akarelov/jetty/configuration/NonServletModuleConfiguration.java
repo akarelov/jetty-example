@@ -14,6 +14,19 @@ import com.google.inject.AbstractModule;
 import com.google.inject.Scopes;
 
 public class NonServletModuleConfiguration extends AbstractModule {
+    private static NonServletModuleConfiguration nonServletModuleConfiguration;
+
+    private NonServletModuleConfiguration() {
+
+    }
+
+    public static NonServletModuleConfiguration getInstance() {
+        if (nonServletModuleConfiguration == null) {
+            nonServletModuleConfiguration = new NonServletModuleConfiguration();
+        }
+        return nonServletModuleConfiguration;
+    }
+
     @Override
     protected void configure() {
         bind(AuthorDao.class).to(AuthorDaoImpl.class).in(Scopes.SINGLETON);

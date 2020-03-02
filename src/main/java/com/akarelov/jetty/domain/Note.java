@@ -1,12 +1,16 @@
 package com.akarelov.jetty.domain;
 
+import com.akarelov.jetty.configuration.NoteDeserializer;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-
+@JsonDeserialize(using = NoteDeserializer.class)
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -20,7 +24,7 @@ public class Note {
     @Column(name = "text")
     private String text;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "author_id")
     private Author author;
 }

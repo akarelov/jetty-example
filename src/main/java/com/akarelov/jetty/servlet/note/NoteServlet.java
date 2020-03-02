@@ -42,6 +42,7 @@ public class NoteServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        resp.setContentType(APPLICATION_JSON.asString());
         String authorId = req.getParameter("authorId");
         if (authorId == null) {
             List<Note> notes = noteService.findAll();
