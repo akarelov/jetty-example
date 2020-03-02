@@ -19,6 +19,11 @@ public class ObjectValidator {
     }
 
     public void isValidate(Note note) {
-
+        if (note == null) {
+            throw new IllegalArgumentException("you passed null");
+        }
+        if (note.getText().trim().isEmpty()) {
+            throw new IllegalArgumentException("text must be not blank");
+        }
     }
 }

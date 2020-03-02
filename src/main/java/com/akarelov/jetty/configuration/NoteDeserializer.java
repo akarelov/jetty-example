@@ -9,13 +9,11 @@ import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 import com.google.inject.Guice;
-import com.google.inject.Inject;
 
 import java.io.IOException;
 
 public class NoteDeserializer extends StdDeserializer<Note> {
-    @Inject
-    private AuthorDao authorDao;
+    private final AuthorDao authorDao;
 
     public NoteDeserializer() {
         this(null);
@@ -29,8 +27,14 @@ public class NoteDeserializer extends StdDeserializer<Note> {
     @Override
     public Note deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException {
         JsonNode treeNode = jp.getCodec().readTree(jp);
-        String text = treeNode.get("text").asText();
-        int authorId = treeNode.get("author_id").asInt();
+        JsonNode textNode = treeNode.get("text");
+        JsonNode authorIdNode = treeNode.get("author_id");
+        if (textNode == null || authorIdNode == null) {
+            throw new IllegalArgumentException("you passed bad request");
+
+        }
+        String text = textNode.asText();
+        int authorId = authorIdNode.asInt();
         Author author = authorDao.findById(authorId).orElseThrow(() -> new UserNotExistsException("user not exists"));
         return Note.builder()
                 .author(author)
